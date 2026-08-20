@@ -24,14 +24,22 @@ export const LENSES = [
   { t:'평가',            d:'평가를 어떤 관점으로 볼 것인가' },
 ];
 
-export const SCHEDULE = [
-  { date:'2026-09-03', label:'9월 3일', title:'미국 출국',
-    desc:'김진호 교수 출국' },
-  { date:'2026-10-01', label:'10월 1일', title:'도착',
-    desc:'귀국' },
-  { date:'2026-10-06', label:'10월 6~8일', title:'2차 협의회',
-    desc:'개인 수업사례 2쪽 정리하여 지참 · 각 저자 사례의 세부 목차와 공통 서술 틀 확정' },
-];
+// ── 일정 ──────────────────────────────────────────────
+//  official : 우리 팀의 공식 일정 (크게 표시)
+//  ref      : 참고용 (김진호 교수님 개인 일정)
+export const SCHEDULE_OFFICIAL = {
+  date:'2026-10-06', label:'10월 6~8일 중', title:'2차 협의회',
+  prep:'개인 수업사례 2쪽 정리해 오기',
+  desc:'각 저자 사례의 세부 목차와 공통 서술 틀을 확정한다.',
+};
+
+export const SCHEDULE_REF = {
+  note:'김진호 교수님 일정',
+  items:[
+    { date:'2026-09-03', label:'9월 3일',  title:'미국 출국' },
+    { date:'2026-10-01', label:'10월 1일', title:'도착' },
+  ],
+};
 
 export const TOPICS = [
   {
@@ -177,13 +185,17 @@ export const TOPICS = [
   {
     id:'t9',
     title:'일정',
-    summary:'9월 3일 출국 · 10월 1일 도착 · 10월 6~8일 중 2차 협의회 (개인 수업사례 2쪽 지참)',
+    summary:'우리 팀의 공식 일정은 10월 6~8일 중 2차 협의회. 개인 수업사례 2쪽을 정리해 온다.',
     tags:['2차 협의회','수업사례 2쪽'],
     html:`
+      <h4>공식 일정</h4>
+      <ul>
+        <li><strong>10월 6~8일 중</strong> — <em>개인 수업사례 2쪽 정리</em>하여 2차 협의회 실시</li>
+      </ul>
+      <h4>참고 — 김진호 교수님 일정</h4>
       <ul>
         <li><strong>9월 3일</strong> — 미국(출국)</li>
         <li><strong>10월 1일</strong> — 도착</li>
-        <li><strong>10월 6~8일 중</strong> — <em>개인 수업사례 2쪽 정리</em>하여 2차 협의회 실시</li>
       </ul>
       <div class="wing">
         <b>2차 협의회에서 확정할 것</b>

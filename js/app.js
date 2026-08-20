@@ -1,7 +1,7 @@
 // ══════════════════════════════════════════════════════
 //  화면 조립
 // ══════════════════════════════════════════════════════
-import { DRIVE_URL, AUTHORS, LENSES, SCHEDULE, TOPICS } from './data.js';
+import { DRIVE_URL, AUTHORS, LENSES, SCHEDULE_OFFICIAL, SCHEDULE_REF, TOPICS } from './data.js';
 import * as CM from './comments.js';
 
 const $  = (s, r=document) => r.querySelector(s);
@@ -66,31 +66,28 @@ $('#lensGrid').append(...LENSES.map(l =>
 (function schedule(){
   const today = new Date(); today.setHours(0,0,0,0);
   const days  = d => Math.round((new Date(d+'T00:00:00') - today) / 86400000);
-  const nextIdx = SCHEDULE.findIndex(s => days(s.date) >= 0);
+  const o = SCHEDULE_OFFICIAL;
+  const n = days(o.date);
+  const dday = n === 0 ? '오늘' : n > 0 ? `D-${n}` : `${-n}일 지남`;
 
-  $('#timeline').append(...SCHEDULE.map((s, i) => {
-    const n = days(s.date);
-    const li = el('li');
-    if(i === nextIdx) li.classList.add('is-next');
-    if(n < 0)         li.classList.add('is-past');
-    const dday = n === 0 ? '오늘' : n > 0 ? `D-${n}` : `${-n}일 지남`;
-    li.innerHTML = `
-      <div class="tl">
-        <span class="tl__date">${esc(s.label)}</span>
-        <span class="tl__t">${esc(s.title)}</span>
-        <span class="tl__dday">${dday}</span>
-        <p class="tl__d">${esc(s.desc)}</p>
-      </div>`;
+  $('#officialDate').textContent = o.label;
+  $('#officialTitle').textContent = o.title;
+  $('#officialDday').textContent = dday;
+  $('#officialPrep').textContent = o.prep;
+  $('#officialDesc').textContent = o.desc;
+
+  $('#refNote').textContent = SCHEDULE_REF.note;
+  $('#refList').append(...SCHEDULE_REF.items.map(s => {
+    const li = el('li', 'ref__item');
+    if(days(s.date) < 0) li.classList.add('is-past');
+    li.innerHTML = `<b>${esc(s.label)}</b><span>${esc(s.title)}</span>`;
     return li;
   }));
 
-  const next = SCHEDULE[nextIdx];
-  if(next){
-    const n = days(next.date);
-    $('#heroNext').innerHTML =
-      `다음 일정 · <b>${esc(next.label)} ${esc(next.title)}</b>` +
-      (n === 0 ? ' — 오늘입니다' : ` — <b>D-${n}</b>`);
-  }
+  $('#heroNext').innerHTML =
+    `다음 일정 · <b>${esc(o.label)} ${esc(o.title)}</b>` +
+    (n === 0 ? ' — 오늘입니다' : n > 0 ? ` — <b>${dday}</b>` : '') +
+    `<span class="hero__prep">${esc(o.prep)}</span>`;
 })();
 
 /* ═══════════ 댓글 위젯 ═══════════ */
