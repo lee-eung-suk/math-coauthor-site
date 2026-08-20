@@ -11,5 +11,5 @@
 //  ⚠️ anon key 는 공개되어도 되는 키입니다. service_role 키는 절대 넣지 마세요.
 // ══════════════════════════════════════════════════════
 
-export const SUPABASE_URL      = '';
-export const SUPABASE_ANON_KEY = '';
+export const SUPABASE_URL      = 'https://htpkyvegxoogfwcqmgok.supabase.co';
+export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0cGt5dmVneG9vZ2Z3Y3FtZ29rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcyMDU2NzYsImV4cCI6MjEwMjc4MTY3Nn0.ShOK0dE5s19Pzj4eBXXrA6gVugNEN_2ToVUwKO_gvvk';
