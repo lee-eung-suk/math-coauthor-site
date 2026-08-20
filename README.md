@@ -3,6 +3,8 @@
 김진호 · 이응석 · 차소정 · 오유경 네 저자의 공동집필 작업 공간.
 빌드 도구 없이 열리는 정적 웹페이지입니다.
 
+**공개 주소 → https://lee-eung-suk.github.io/math-coauthor-site/**
+
 ## 구성
 
 ```
@@ -32,8 +34,14 @@ cd math-coauthor-site && python3 -m http.server 8080
 항목을 추가하려면 `{ id, title, summary, tags, html }` 하나를 배열에 더하면 됩니다.
 `id` 는 댓글이 붙는 기준이므로 **한 번 정한 뒤 바꾸지 마세요.**
 
-## 배포 (GitHub Pages)
+## 배포 (설정 완료됨)
 
-1. GitHub 에 저장소를 만들고 이 폴더를 올립니다.
-2. 저장소 → Settings → Pages → Source 를 `main` 브랜치 `/ (root)` 로 지정.
-3. 몇 분 뒤 `https://<계정>.github.io/<저장소>/` 로 열립니다.
+`lee-eung-suk/math-coauthor-site` 저장소의 `main` 브랜치가 GitHub Pages 로 연결되어 있습니다.
+고친 뒤 push 하면 1~2분 안에 반영됩니다.
+
+```bash
+git add -A && git commit -m "내용 수정" && git push
+```
+
+검색엔진 색인은 `noindex` 로 막아 두었습니다. 다만 저장소가 public 이므로
+**주소를 아는 사람은 볼 수 있습니다.** 링크는 네 분끼리만 공유해 주세요.
