@@ -3,7 +3,10 @@
 김진호 · 이응석 · 차소정 · 오유경 네 저자의 공동집필 작업 공간.
 빌드 도구 없이 열리는 정적 웹페이지입니다.
 
-**공개 주소 → https://lee-eung-suk.github.io/math-coauthor-site/**
+**공개 주소 (Vercel · 이 주소를 공유하세요)**
+→ https://math-coauthor-site.vercel.app/
+
+예비 주소 (GitHub Pages) → https://lee-eung-suk.github.io/math-coauthor-site/
 
 ## 구성
 
@@ -36,8 +39,9 @@ cd math-coauthor-site && python3 -m http.server 8080
 
 ## 배포 (설정 완료됨)
 
-`lee-eung-suk/math-coauthor-site` 저장소의 `main` 브랜치가 GitHub Pages 로 연결되어 있습니다.
-고친 뒤 push 하면 1~2분 안에 반영됩니다.
+`lee-eung-suk/math-coauthor-site` 저장소의 `main` 브랜치가
+**Vercel** 과 **GitHub Pages** 양쪽에 연결되어 있습니다.
+고친 뒤 push 하면 Vercel 은 10~20초, GitHub Pages 는 1~2분 안에 반영됩니다.
 
 ```bash
 git add -A && git commit -m "내용 수정" && git push
