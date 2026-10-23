@@ -14,11 +14,11 @@
 index.html            한 페이지 전체
 css/style.css         디자인 (라이트/다크 자동)
 js/data.js            ← 협의 내용. 내용 수정은 대부분 여기서만
-js/config.js          ← Supabase 키 (댓글 공유용)
-js/comments.js        댓글 저장 (Supabase / 브라우저 이중)
+js/config.js          ← 구글 시트 웹앱 주소 (의견 공유용)
+js/comments.js        의견 저장 (구글 시트 / 브라우저 이중)
 js/app.js             화면 조립
-supabase_setup.sql    댓글 테이블 생성 SQL
-SUPABASE_설정.md      댓글 공유 켜는 방법 (10분)
+apps-script/Code.gs   의견 저장 서버 (구글 시트 + Apps Script)
+구글시트_설정.md       의견 저장소 설정·재배포 방법
 ```
 
 ## 열어보기

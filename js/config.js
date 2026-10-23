@@ -1,15 +1,13 @@
 // ══════════════════════════════════════════════════════
-//  Supabase 연결 설정
+//  의견(댓글) 저장소 설정 — 구글 시트
 //  ─────────────────────────────────────────────────────
-//  아래 두 값을 채우면 네 저자가 댓글을 "함께" 보게 됩니다.
-//  비워 두면 자동으로 이 브라우저에만 저장되는 체험 모드로 동작합니다.
+//  apps-script/Code.gs 를 Apps Script 에 붙여넣고 [웹 앱]으로 배포하면
+//  .../exec 로 끝나는 주소가 나옵니다. 그 주소를 아래에 넣으세요.
 //
-//  값 찾는 곳 : Supabase 대시보드 → Project Settings → API
-//    SUPABASE_URL      = Project URL          (https://xxxx.supabase.co)
-//    SUPABASE_ANON_KEY = anon / public key    (매우 긴 문자열)
+//    예) https://script.google.com/macros/s/AKfycb..../exec
 //
-//  ⚠️ anon key 는 공개되어도 되는 키입니다. service_role 키는 절대 넣지 마세요.
+//  비워 두면 이 브라우저에만 저장되는 체험 모드로 동작합니다.
+//  (자세한 순서는 같은 폴더의 구글시트_설정.md)
 // ══════════════════════════════════════════════════════
 
-export const SUPABASE_URL      = 'https://htpkyvegxoogfwcqmgok.supabase.co';
-export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0cGt5dmVneG9vZ2Z3Y3FtZ29rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcyMDU2NzYsImV4cCI6MjEwMjc4MTY3Nn0.ShOK0dE5s19Pzj4eBXXrA6gVugNEN_2ToVUwKO_gvvk';
+export const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbyv2Wx9x3MEbQb6gz9AXYPeTFXVsJDVZEJYXKfw0OThd3GE1qCd5HEJY7o7TBRnh8ChPg/exec';

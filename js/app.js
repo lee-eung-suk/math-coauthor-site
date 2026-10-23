@@ -107,10 +107,11 @@ function buildComments(host){
     <div class="cm__head">
       <span class="cm__title">💬 의견 <span class="cm__n"></span></span>
       <span class="cm__state"></span>
+      ${CM.isShared ? `<button class="cm__refresh" type="button" title="새로 올라온 의견 불러오기">새로고침</button>` : ''}
     </div>
     ${CM.isShared ? '' : `<div class="cm__banner">
-      <b>체험 모드</b> — 지금은 댓글이 <b>이 브라우저에만</b> 저장됩니다.
-      <code>js/config.js</code> 에 Supabase 키를 넣으면 네 분이 함께 보게 됩니다.
+      <b>체험 모드</b> — 지금은 의견이 <b>이 브라우저에만</b> 저장됩니다.
+      <code>js/config.js</code> 에 구글 시트 주소를 넣으면 네 분이 함께 보게 됩니다.
     </div>`}
     <form class="cm__form">
       <div class="cm__who"><b>작성자</b>${
@@ -174,15 +175,23 @@ function buildComments(host){
     });
   }
 
-  async function load(){
+  async function load(opts){
     try {
+      state.textContent = opts && opts.fresh ? '불러오는 중…' : '';
+      render(await CM.listComments(topic, opts));
       state.textContent = '';
-      render(await CM.listComments(topic));
     } catch(e){
       state.textContent = '불러오기 실패';
       list.innerHTML = `<li class="cm__empty">의견을 불러오지 못했습니다. (${esc(e.message)})</li>`;
     }
   }
+
+  const refreshBtn = $('.cm__refresh', host);
+  if(refreshBtn) refreshBtn.addEventListener('click', async () => {
+    refreshBtn.disabled = true;
+    await load({ fresh:true });
+    refreshBtn.disabled = false;
+  });
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -282,5 +291,5 @@ $$('.comments[data-topic="__general__"]').forEach(buildComments);
 
 /* ─────────── 모드 표시 ─────────── */
 $('#footMode').textContent = CM.isShared
-  ? '댓글: Supabase 공유 모드 — 네 분이 같은 의견을 봅니다.'
-  : '댓글: 체험 모드 — 이 브라우저에만 저장됩니다. (js/config.js 에 Supabase 키를 넣으면 공유됩니다)';
+  ? '의견: 구글 시트 공유 모드 — 네 분이 같은 의견을 봅니다.'
+  : '의견: 체험 모드 — 이 브라우저에만 저장됩니다. (js/config.js 에 구글 시트 주소를 넣으면 공유됩니다)';
