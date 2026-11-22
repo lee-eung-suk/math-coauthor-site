@@ -12,7 +12,7 @@ $('#next').innerHTML = `
   <b class="next__date">${esc(fmtDate(m.date))} ${esc(m.no)} 협의</b>
   <span class="next__title">${esc(m.title || '')}</span>
   <span class="next__dday">${esc(dday(m.date))}</span>
-  <a class="next__go" href="meetings.html#${m.id}">협의록 열기 →</a>`;
+  <a class="next__go" href="meetings#${m.id}">협의록 열기 →</a>`;
 
 CM.allCounts().then(map => {
   const n = MEETINGS.reduce((s, x) => s + (map[x.id] || 0), 0);
