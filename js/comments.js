@@ -97,9 +97,13 @@ async function allRows({ fresh = false } = {}){
 
 const drop = () => { cache = null; };
 
+// 2026-10-23 에 '__general__' 로 쌓인 2차 협의 기록을 m2 로 읽어 준다.
+const alias = t => (t === 'm2' ? ['m2', '__general__'] : [t]);
+
 export async function listComments(topic, opts){
   const rows = await allRows(opts);
-  return rows.filter(r => r.topic_id === topic);
+  const keys = alias(topic);
+  return rows.filter(r => keys.includes(r.topic_id));
 }
 
 export async function addComment(topic, author, body){
@@ -116,7 +120,11 @@ export async function removeComment(topic, id){
 export async function allCounts(opts){
   try {
     const rows = await allRows(opts);
-    return rows.reduce((m,r) => (m[r.topic_id] = (m[r.topic_id]||0)+1, m), {});
+    return rows.reduce((m,r) => {
+      const k = r.topic_id === '__general__' ? 'm2' : r.topic_id;
+      m[k] = (m[k] || 0) + 1;
+      return m;
+    }, {});
   } catch { return {}; }
 }
 
